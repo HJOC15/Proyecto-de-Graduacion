@@ -15,7 +15,9 @@ export class ProductosPageComponent {
     private cartService:CartService, private router: Router){
     activatedRoute.params.subscribe((params) =>{
       if(params['id'])
-      this.producto = productosService.getProductoById(params['id'])
+      productosService.getProductoById(params['id']).subscribe(serverProducto =>{
+        this.producto = serverProducto
+      })
     })
   }
   ngOnInit(): void{
