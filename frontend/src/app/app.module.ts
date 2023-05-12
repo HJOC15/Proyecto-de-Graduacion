@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/partials/header/header.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { ProductosPageComponent } from './components/pages/productos-page/productos-page.component';
 import { CartPageComponent } from './components/pages/cart-page/cart-page.component';
+import { TitleComponent } from './components/partials/title/title.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CartPageComponent } from './components/pages/cart-page/cart-page.compon
     HeaderComponent,
     HomeComponent,
     ProductosPageComponent,
-    CartPageComponent
+    CartPageComponent,
+    TitleComponent
   ],
   imports: [
     BrowserModule,
