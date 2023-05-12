@@ -3,27 +3,27 @@
         <a routerLink="/" class="logo">Copy Center Evelyn</a>
         <nav>
             <ul>
-                <li>
-                    <a routerLink="/contact">Crea tu Empastado</a>
+                <li *ngIf="isAuth">
+                    <a routerLink="/create">Crea tu Empastado</a>
                 </li>
-                <li>
+                <li *ngIf="isAuth">
                     <a routerLink="/contact">Contacto</a>
                 </li>
-                <li>
+                <li *ngIf="!isAuth">
                     <a routerLink="/login">Iniciar Sesión</a>
                 </li>
                 
-                <li class ="menu-container">
-                    <a routerLink="/dashboard">Humberto</a>
+                <li *ngIf="isAuth" class ="menu-container">
+                    <a routerLink="/dashboard">{{user.name}}</a>
                     <div class ="menu">
                         <a routerLink="/profile">Perfil</a>
                         <a routerLink="/orders">Ordenes</a>
-                        <a>Cerrar Sesión</a>
+                        <a (click)="logout()">Cerrar Sesión</a>
                     </div>
                 </li>
                 <li>
                     <a routerLink="/cart-page">
-                        Cart <span>3</span>
+                        Cart <span *ngIf="cartQuantity">{{cartQuantity}}</span>
                     </a>
                 </li>
             </ul>
