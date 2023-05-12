@@ -13,7 +13,7 @@ export class ProductosService {
     return sample_foods;
   }
 
-  getProductoById(productoId:number):Productos{
+  getProductoById(productoId:string):Productos{
     return this.getAll().find(producto => producto.id ==productoId) ?? new Productos();
   }
 }

@@ -1,1 +1,18 @@
-<p>productos-page works!</p>
+<div class="container">
+    <img [src]="producto.imageUrl" [alt]="producto.name"/>
+
+    <div clas="details">
+        <div class="header">
+            <span class="name">
+                {{producto.name}}
+            </span>
+        </div>
+        <div class ="price">
+            <span>
+                {{producto.price | currency}}
+            </span>
+        </div>
+
+        <button (click)="addToCart()">Agregar al carro</button>
+    </div>
+</div>

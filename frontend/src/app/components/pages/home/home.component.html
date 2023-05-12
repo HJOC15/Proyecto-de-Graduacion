@@ -1,19 +1,21 @@
 <ul>
     <li *ngFor="let producto of productos">
-        <a routerLink="/producto/{{producto.id}}"></a>
-        <img [src]="producto.imageUrl" alt= "{{producto.name}}"/>
-        <div class ="content">
-            <div class ="name">
-                {{producto.name}}
+        <a routerLink="/productos/{{producto.id}}">
+            <img [src]="producto.imageUrl" alt= "{{producto.name}}"/>
+            <div class ="content">
+                <div class ="name">
+                    {{producto.name}}
+                </div>
+            
+            <div class="product-item-footer">
+                <div class="price">
+                    <span>
+                        {{producto.price | currency}}
+                    </span>
+                </div>
             </div>
+            </div>
+        </a>
         
-        <div class="product-item-footer">
-            <div class="price">
-                <span>
-                    {{producto.price | currency}}
-                </span>
-            </div>
-        </div>
-        </div>
     </li>
 </ul>
