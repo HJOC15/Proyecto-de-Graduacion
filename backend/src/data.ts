@@ -25,3 +25,20 @@ export const sample_foods: any[] =[
         imageUrl: 'assets/img4.jpg'
      }
 ]
+
+export const sample_users: any[] =[
+   {
+      name: "Humberto Orellana",
+      email: "humbertorellana15@gmail.com",
+      password: "123456",
+      address: "Jalapa",
+      isAdmin: true
+   },
+   {
+      name: "Amadeo Cortez",
+      email: "amadeocortez@gmail.com",
+      password: "123456",
+      address: "Jalapa",
+      isAdmin: false
+   }
+]

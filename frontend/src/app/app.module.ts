@@ -8,6 +8,8 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { ProductosPageComponent } from './components/pages/productos-page/productos-page.component';
 import { CartPageComponent } from './components/pages/cart-page/cart-page.component';
 import { TitleComponent } from './components/partials/title/title.component';
+import { LoginPageComponent } from './components/pages/login-page/login-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,12 +18,14 @@ import { TitleComponent } from './components/partials/title/title.component';
     HomeComponent,
     ProductosPageComponent,
     CartPageComponent,
-    TitleComponent
+    TitleComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
