@@ -21,6 +21,12 @@
             
            
             <default-button text="Iniciar Sesión"></default-button>
+            <div class="register">
+                ¿Nuevo usuario? &nbsp;
+                <a routerLink="/register" [queryParams]="{returnUrl : returnUrl}">
+                  Registrate acá
+                </a>
+              </div>
         </form>
     </div>
 </div>

@@ -3,17 +3,17 @@
         <a routerLink="/" class="logo">Copy Center Evelyn</a>
         <nav>
             <ul>
-                <li *ngIf="isAuth">
+                <li >
                     <a routerLink="/create">Crea tu Empastado</a>
                 </li>
-                <li *ngIf="isAuth">
+                <li >
                     <a routerLink="/contact">Contacto</a>
                 </li>
                 <li *ngIf="!isAuth">
                     <a routerLink="/login">Iniciar Sesión</a>
                 </li>
-                
-                <li *ngIf="isAuth" class ="menu-container">
+                <!-- *ngIf="isAuth" -->
+                <li  class ="menu-container">
                     <a routerLink="/dashboard">{{user.name}}</a>
                     <div class ="menu">
                         <a routerLink="/profile">Perfil</a>
