@@ -26,7 +26,9 @@ router.post("/login", asyncHandler( async (req, res) =>{
     const user = await UserModel.findOne({email})
 
         if(user && (await bcrypt.compare(password,user.password))){
+            console.log(user)
             res.send(generateTokenResponse(user))
+            
         }
         else{
             res.status(HTTP_BAD_REQUEST).send("Nombre o contraseña no es válido");
@@ -60,16 +62,22 @@ router.post('/register', asyncHandler(
     }
 ))
 
-const generateTokenResponse = (user:any)=>{
+const generateTokenResponse = (user:User)=>{
     const token = jwt.sign({
-        email:user.email, isAdmin:user.isAdmin
+        id: user.id, email:user.email, isAdmin:user.isAdmin
     }, "TextoRandom", {
         expiresIn:"30d"
     });
 
-    user.token = token;
-    return user;
-
+    //const data = {token:token, user}
+    return  {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        address: user.address,
+        isAdmin: user.isAdmin,
+        token: token
+      };
 }
 
 export default router;

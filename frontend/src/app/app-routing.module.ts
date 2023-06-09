@@ -14,9 +14,7 @@ const routes: Routes = [
   {path: 'cart-page', component: CartPageComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'register', component: RegisterPageComponent},
-  //En el momento en el que se pueda arreglar el problema del token, quitar el comentario del AuthGuard
-  //Eso hará que la ruta este protegida por fin.
-  {path: 'checkout', component: CheckoutPageComponent, /*canActivate:[AuthGuard]*/}
+  {path: 'checkout', component: CheckoutPageComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({
