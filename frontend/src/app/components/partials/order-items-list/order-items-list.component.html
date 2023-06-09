@@ -14,13 +14,13 @@
             {{item.producto.name}}
         </td>
         <td>
-            {{item.producto.price | currency}}
+            {{item.producto.price | currency:'Q'}}
         </td>
         <td>
             {{item.quantity}}
         </td>
         <td>
-            {{item.price | currency}}
+            {{item.price | currency:'Q'}}
         </td>
     </tr>
     <tr>
@@ -32,7 +32,7 @@
         </td>
         <td>
             <strong>
-                {{order.totalPrice | currency}}
+                {{order.totalPrice | currency:'Q'}}
             </strong>
         </td>
     </tr>

@@ -20,10 +20,15 @@
                 <option>3</option>
                 <option>4</option>
                 <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
             </select>
             </div>
             <div>
-                {{cartItem.price | currency}}
+                {{cartItem.price | currency:'Q'}}
             </div>
 
             <div>
@@ -36,7 +41,7 @@
     <div class="checkout">
         <div>
             <div class="Total de producto">{{cart.totalCount}}</div>
-            <div class="Precio total">{{cart.totalPrice|currency}}</div>
+            <div class="Precio total">{{cart.totalPrice|currency:'Q'}}</div>
         </div>
         <a routerLink="/checkout">Proceder a pagar</a>
     </div>
