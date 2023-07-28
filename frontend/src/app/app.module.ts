@@ -24,6 +24,8 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { PaymentPageComponent } from './components/pages/payment-page/payment-page.component';
 import { PaypalButtonComponent } from './components/partials/paypal-button/paypal-button.component';
 import { OrderTrackPageComponent } from './components/pages/order-track-page/order-track-page.component';
+import { EmpastadosPageComponent } from './components/pages/empastados-page/empastados-page.component';
+import { ContactPageComponent } from './components/pages/contact-page/contact-page.component';
 /*
 import { registerLocaleData } from '@angular/common';
 import localeEsGT from '@angular/common/locales/es-GT';
@@ -47,7 +49,9 @@ import localeEsGT from '@angular/common/locales/es-GT';
     MapComponent,
     PaymentPageComponent,
     PaypalButtonComponent,
-    OrderTrackPageComponent
+    OrderTrackPageComponent,
+    EmpastadosPageComponent,
+    ContactPageComponent
   ],
   imports: [
     BrowserModule,
