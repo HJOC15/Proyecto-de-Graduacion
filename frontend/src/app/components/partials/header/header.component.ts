@@ -34,4 +34,11 @@ constructor(cartService:CartService, private userService:UserService){
     return this.user.token;
   }
 
+  isAdmin() {
+    if (this.user && this.user && this.user.isAdmin !== undefined) {
+      return this.user.isAdmin;
+    }
+    return false;
+  }
+
 }

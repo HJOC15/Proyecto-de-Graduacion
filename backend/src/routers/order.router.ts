@@ -8,6 +8,8 @@ import auth from '../middlewares/auth.mid';
 const router = Router();
 router.use(auth);
 
+
+
 router.post('/create',
 asyncHander(async (req:any, res:any) => {
     const requestOrder = req.body;
@@ -55,8 +57,36 @@ router.get('/track/:id', asyncHander( async (req, res) => {
     res.send(order);
 }))
 
+router.get('/', asyncHander(async (req:any, res:any) => {
+    const allOrders = await OrderModel.find();
+    res.send(allOrders);
+}));
+
+router.post('/updateStatus/:id', asyncHander(async (req, res) => {
+    const { id } = req.params;
+    const { newStatus } = req.body;
+
+    if (!Object.values(OrderStatus).includes(newStatus)) {
+        res.status(HTTP_BAD_REQUEST).send('Invalid status value');
+        return;
+    }
+
+    const order = await OrderModel.findById(id);
+
+    if (!order) {
+        res.status(HTTP_BAD_REQUEST).send('Order Not Found!');
+        return;
+    }
+
+    order.status = newStatus;
+    await order.save();
+
+    res.send(order);
+}));
+
 export default router;
 
 async function getNewOrderForCurrentUser(req: any) {
     return await OrderModel.findOne({ user: req.user.id, status: OrderStatus.NEW });
 }
+

@@ -13,6 +13,9 @@
                 <li *ngIf="!isAuth">
                     <a routerLink="/login">Iniciar Sesión</a>
                 </li>
+                <li *ngIf="isAdmin()">
+                    <a routerLink="/admin-page">Admin</a>
+                </li>
                 <!-- *ngIf="isAuth" -->
                 <li *ngIf="isAuth"  class ="menu-container">
                     <a routerLink="/dashboard">{{user.name}}</a>

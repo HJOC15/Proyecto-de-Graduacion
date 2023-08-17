@@ -1,0 +1,21 @@
+<div class="admin-page">
+    <h2>Órdenes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Nombre de Cliente</th>
+          <th>Estado de Orden</th>
+          <th>Precio total</th>          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ord of order" (click)="navigateToOrderDetail(ord.id)">
+          <td>{{ ord.id }}</td>
+          <td>{{ ord.name }}</td>
+          <td>{{ ord.status}}</td>
+          <td>{{ ord.totalPrice | currency: 'Q'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

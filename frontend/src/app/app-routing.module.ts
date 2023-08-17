@@ -11,6 +11,8 @@ import { PaymentPageComponent } from './components/pages/payment-page/payment-pa
 import { OrderTrackPageComponent } from './components/pages/order-track-page/order-track-page.component';
 import { EmpastadosPageComponent } from './components/pages/empastados-page/empastados-page.component';
 import { ContactPageComponent } from './components/pages/contact-page/contact-page.component';
+import { AdminPageComponent } from './components/pages/admin-page/admin-page.component';
+import { OrderDetailComponent } from './components/pages/order-detail/order-detail.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -22,7 +24,9 @@ const routes: Routes = [
   {path: 'payment', component: PaymentPageComponent, canActivate:[AuthGuard]},
   {path:'track/:orderId', component: OrderTrackPageComponent, canActivate:[AuthGuard]},
   {path: 'empastados-page', component: EmpastadosPageComponent},
-  {path: 'contact-page', component: ContactPageComponent}
+  {path: 'contact-page', component: ContactPageComponent},
+  {path: 'admin-page', component: AdminPageComponent},
+  { path: 'order/:id', component: OrderDetailComponent },
 ];
 
 @NgModule({

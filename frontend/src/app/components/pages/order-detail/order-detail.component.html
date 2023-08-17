@@ -1,0 +1,12 @@
+<div *ngIf="order" class="order-detail">
+    <h2>Detalle de orden</h2>
+    <p><strong>ID de Orden</strong> {{ order.id }}</p>
+    <p><strong>Nombre de Usuario</strong> {{ order.name }}</p>
+    <p><strong>Estado de Orden:</strong> {{ order.status }}</p>
+    <p><strong>Precio total</strong> {{ order.totalPrice | currency: 'Q'}}</p>
+  
+    <!-- Botones para cambiar el estado -->
+    <button (click)="updateOrderStatus('Pagado')">Marcar como Pagado</button>
+    <button (click)="updateOrderStatus('Cancelado')">Marcar como Cancelado</button>
+    <button (click)="updateOrderStatus('Entregado')">Marcar como Entregado</button>
+  </div>

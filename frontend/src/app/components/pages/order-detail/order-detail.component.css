@@ -1,0 +1,26 @@
+.order-detail {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-detail h2 {
+  margin-bottom: 10px;
+}
+
+.order-detail p {
+  margin: 5px 0;
+}
+
+.order-detail button {
+  margin: 10px;
+  padding: 5px 10px;
+  background-color: #1E8449;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}

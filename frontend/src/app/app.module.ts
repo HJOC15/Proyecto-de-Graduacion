@@ -26,6 +26,8 @@ import { PaypalButtonComponent } from './components/partials/paypal-button/paypa
 import { OrderTrackPageComponent } from './components/pages/order-track-page/order-track-page.component';
 import { EmpastadosPageComponent } from './components/pages/empastados-page/empastados-page.component';
 import { ContactPageComponent } from './components/pages/contact-page/contact-page.component';
+import { AdminPageComponent } from './components/pages/admin-page/admin-page.component';
+import { OrderDetailComponent } from './components/pages/order-detail/order-detail.component';
 /*
 import { registerLocaleData } from '@angular/common';
 import localeEsGT from '@angular/common/locales/es-GT';
@@ -51,7 +53,9 @@ import localeEsGT from '@angular/common/locales/es-GT';
     PaypalButtonComponent,
     OrderTrackPageComponent,
     EmpastadosPageComponent,
-    ContactPageComponent
+    ContactPageComponent,
+    AdminPageComponent,
+    OrderDetailComponent
   ],
   imports: [
     BrowserModule,

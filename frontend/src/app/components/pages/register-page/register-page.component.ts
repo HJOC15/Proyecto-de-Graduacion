@@ -32,7 +32,7 @@ constructor(
       email:['', [Validators.required, Validators.email]],
       password:['', [Validators.required, Validators.minLength(3)]],
       confirmPassword: ['', [Validators.required]],
-      address: ['', [Validators.required, Validators.minLength(10)]]
+      address: ['', [Validators.required, Validators.minLength(5)]]
     },
     {
       Validators: PasswordsMatchValidator('password', 'confirmPassword')
