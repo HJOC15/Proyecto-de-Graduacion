@@ -29,6 +29,7 @@ import { ContactPageComponent } from './components/pages/contact-page/contact-pa
 import { AdminPageComponent } from './components/pages/admin-page/admin-page.component';
 import { OrderDetailComponent } from './components/pages/order-detail/order-detail.component';
 import { OrderPersonComponent } from './components/pages/order-person/order-person.component';
+import { ThreeRendererComponent } from './components/pages/three-renderer/three-renderer.component';
 /*
 import { registerLocaleData } from '@angular/common';
 import localeEsGT from '@angular/common/locales/es-GT';
@@ -57,7 +58,8 @@ import localeEsGT from '@angular/common/locales/es-GT';
     ContactPageComponent,
     AdminPageComponent,
     OrderDetailComponent,
-    OrderPersonComponent
+    OrderPersonComponent,
+    ThreeRendererComponent
   ],
   imports: [
     BrowserModule,
