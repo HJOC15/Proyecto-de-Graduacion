@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/pages/home/home.component';
 import { ProductosPageComponent } from './components/pages/productos-page/productos-page.component';
@@ -13,6 +13,7 @@ import { EmpastadosPageComponent } from './components/pages/empastados-page/empa
 import { ContactPageComponent } from './components/pages/contact-page/contact-page.component';
 import { AdminPageComponent } from './components/pages/admin-page/admin-page.component';
 import { OrderDetailComponent } from './components/pages/order-detail/order-detail.component';
+import { OrderPersonComponent } from './components/pages/order-person/order-person.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'contact-page', component: ContactPageComponent},
   {path: 'admin-page', component: AdminPageComponent},
   { path: 'order/:id', component: OrderDetailComponent },
+  {path: 'order-person', component: OrderPersonComponent}
 ];
 
 @NgModule({

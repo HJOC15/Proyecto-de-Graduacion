@@ -28,6 +28,7 @@ import { EmpastadosPageComponent } from './components/pages/empastados-page/empa
 import { ContactPageComponent } from './components/pages/contact-page/contact-page.component';
 import { AdminPageComponent } from './components/pages/admin-page/admin-page.component';
 import { OrderDetailComponent } from './components/pages/order-detail/order-detail.component';
+import { OrderPersonComponent } from './components/pages/order-person/order-person.component';
 /*
 import { registerLocaleData } from '@angular/common';
 import localeEsGT from '@angular/common/locales/es-GT';
@@ -55,7 +56,8 @@ import localeEsGT from '@angular/common/locales/es-GT';
     EmpastadosPageComponent,
     ContactPageComponent,
     AdminPageComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    OrderPersonComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,26 @@
+<div class="order-list">
+    <h2>Tus ordenes</h2>
+    <ul>
+      <li *ngFor="let order of orders">
+        <div class="order-item">
+          <p><strong>Order ID:</strong> {{ order.id }}</p>
+          <p><strong>Fecha de compra</strong> {{ order.createdAt }}</p>
+          <p><strong>Nombre:</strong> {{ order.name }}</p>
+          <p><strong>Precio:</strong> {{ order.totalPrice }}</p>
+          <p><strong>Estado:</strong> {{ order.status }}</p>
+          <div class="item-list">
+            <p><strong>Items:</strong></p>
+            <ul>
+              <li *ngFor="let item of order.items">
+                <div class="item">
+                  <p><strong>Producto:</strong> {{ item.producto.name }}</p>
+                  <p><strong>Cantidad:</strong> {{ item.quantity }}</p>
+                  <p><strong>Total:</strong> {{ item.price }}</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>

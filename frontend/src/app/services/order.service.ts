@@ -34,6 +34,9 @@ export class OrderService {
     const updateUrl = `${ORDER_URL}/updateStatus/${orderId}`;
     return this.http.post<Order>(updateUrl, { newStatus });
   }
+  getOrdersForCurrentUser(): Observable<Order[]> {
+    return this.http.get<Order[]>(ORDER_URL + '/myOrders');
+  }
 }
 
 

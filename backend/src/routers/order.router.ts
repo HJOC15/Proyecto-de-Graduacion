@@ -84,6 +84,13 @@ router.post('/updateStatus/:id', asyncHander(async (req, res) => {
     res.send(order);
 }));
 
+router.get('/myOrders', asyncHander(async (req: any, res: any) => {
+    const userId = req.user.id;
+
+    const userOrders = await OrderModel.find({ user: userId });
+    res.send(userOrders);
+}));
+
 export default router;
 
 async function getNewOrderForCurrentUser(req: any) {
