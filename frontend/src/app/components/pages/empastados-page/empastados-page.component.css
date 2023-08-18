@@ -1,0 +1,6 @@
+.app-three-renderer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Asegura que la altura sea del 100% del viewport */
+  }
