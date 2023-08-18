@@ -14,6 +14,7 @@ import { ContactPageComponent } from './components/pages/contact-page/contact-pa
 import { AdminPageComponent } from './components/pages/admin-page/admin-page.component';
 import { OrderDetailComponent } from './components/pages/order-detail/order-detail.component';
 import { OrderPersonComponent } from './components/pages/order-person/order-person.component';
+import { AdminAuthGuard } from './auth/guards/admin-auth.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -24,11 +25,11 @@ const routes: Routes = [
   {path: 'checkout', component: CheckoutPageComponent, canActivate:[AuthGuard]},
   {path: 'payment', component: PaymentPageComponent, canActivate:[AuthGuard]},
   {path:'track/:orderId', component: OrderTrackPageComponent, canActivate:[AuthGuard]},
-  {path: 'empastados-page', component: EmpastadosPageComponent},
-  {path: 'contact-page', component: ContactPageComponent},
-  {path: 'admin-page', component: AdminPageComponent},
-  { path: 'order/:id', component: OrderDetailComponent },
-  {path: 'order-person', component: OrderPersonComponent}
+  {path: 'empastados-page', component: EmpastadosPageComponent, canActivate:[AuthGuard]},
+  {path: 'contact-page', component: ContactPageComponent, canActivate:[AuthGuard]},
+  {path: 'admin-page', component: AdminPageComponent, canActivate:[AdminAuthGuard]},
+  {path: 'order/:id', component: OrderDetailComponent, canActivate:[AdminAuthGuard]},
+  {path: 'order-person', component: OrderPersonComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({
