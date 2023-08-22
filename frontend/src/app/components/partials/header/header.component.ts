@@ -30,7 +30,6 @@ constructor(cartService:CartService, private userService:UserService){
   }
 
   get isAuth(){
-    console.log(this.user.token)
     return this.user.token;
   }
 
