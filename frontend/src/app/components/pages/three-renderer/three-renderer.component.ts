@@ -19,6 +19,7 @@ export class ThreeRendererComponent implements AfterViewInit {
   private pagesTexture: THREE.Texture;
 
   private selectedTextureIndex: number = 0;
+  private logoTexture: THREE.Texture;
 
   constructor(private el: ElementRef, private cartservice:CartService) {
     this.coverTextures = [
@@ -30,6 +31,7 @@ export class ThreeRendererComponent implements AfterViewInit {
       // Agrega más texturas de cubierta según necesites
     ];
     this.pagesTexture = new THREE.TextureLoader().load('assets/book_pages_texture.jpg');
+    this.logoTexture = new THREE.TextureLoader().load('');
   }
 
   ngAfterViewInit(): void {
@@ -128,23 +130,51 @@ export class ThreeRendererComponent implements AfterViewInit {
     animate();
   }
 
-  addToCart(): void {
-    const selectedTextureName = this.getTextureName(this.selectedTextureIndex);
-    const productName = `Empastado - ${selectedTextureName}`;
-    // Crea el producto con la textura actualmente seleccionada
-    const producto: Productos = {
-      id: '20', // Asigna un ID adecuado
-      name: productName, // Asigna un nombre adecuado
-      price: 35, // Asigna un precio adecuado
-      imageUrl: this.coverTextures[this.selectedTextureIndex].image.src // Obtiene la URL de la textura seleccionada
-    };
-
-    this.cartservice.addToCart(producto);
-  }
+  
   getTextureName(index: number): string {
     const textureNames = ['Café texturizado', 'Cuerina', 'Verde oscuro texturizado', 'Rojo sangre', 'Rojo sangre portada'];
     return textureNames[index];
   }
+
+  addLogo(event: any, coverTextureIndex: number): void {
+    const file = event.target.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            const logoTexture = new THREE.TextureLoader().load(e.target?.result as string);
+
+            this.logoTexture = logoTexture;
+
+            const coverMesh = this.book.children.find(child => child instanceof THREE.Mesh) as THREE.Mesh;
+            if (coverMesh && coverMesh.material instanceof THREE.MeshBasicMaterial) {
+                // Aplicar la textura como logo
+                coverMesh.material.map = this.coverTextures[coverTextureIndex];
+                coverMesh.material = this.createCombinedMaterial(coverMesh.material.map, logoTexture);
+            }
+        };
+
+        // Lee el contenido de la imagen
+        reader.readAsDataURL(file);
+    }
+}
+
+createCombinedMaterial(baseTexture: THREE.Texture, overlayTexture: THREE.Texture): THREE.Material {
+  // Crea un material personalizado que combina las dos texturas
+  const material = new THREE.MeshBasicMaterial({
+      map: baseTexture, // Textura de la cubierta original como base
+      transparent: true, // Permite la transparencia
+      opacity: 1, // Ajusta la opacidad según sea necesario
+  });
+
+  // Agrega la textura del logo como un mapa de transparencia
+  material.alphaMap = overlayTexture;
+  material.alphaMap.wrapS = THREE.RepeatWrapping;
+  material.alphaMap.wrapT = THREE.RepeatWrapping;
+
+  return material;
+}
 
 }
 

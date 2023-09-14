@@ -4,6 +4,6 @@
     <button class="menu-button" (click)="changeTexture(2)">Verde oscuro texturizado</button>
     <button class="menu-button" (click)="changeTexture(3)">Rojo sangre</button>
     <button class="menu-button" (click)="changeTexture(4)">Rojo sangre portada</button>
-    <button class="menu-button" (click)="addToCart()">Agregar al carrito</button>
+    <input type="file" (change)="addLogo($event, 0)" accept=".png">
     <!-- Agrega más botones según el número de texturas -->
   </div>
