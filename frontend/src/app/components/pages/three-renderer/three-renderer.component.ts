@@ -4,7 +4,8 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { CartService } from '../../../services/cart.service';
 import { Productos } from 'src/app/shared/models/Productos';
 import { Text } from '@angular/compiler';
-
+import { TextureService } from 'src/app/services/texture.service.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-three-renderer',
   templateUrl: './three-renderer.component.html',
@@ -22,8 +23,10 @@ export class ThreeRendererComponent implements AfterViewInit {
   private selectedTextureIndex: number = 0;
   private logoTexture: THREE.Texture;
   text: THREE.Texture;
+  router: any;
 
-  constructor(private el: ElementRef, private cartservice:CartService) {
+  constructor(private el: ElementRef, private cartservice:CartService, 
+    private textureService: TextureService) {
     this.coverTextures = [
       new THREE.TextureLoader().load('assets/book_cover_texture1.jpg'),
       new THREE.TextureLoader().load('assets/book_cover_texture2.jpg'),
@@ -114,6 +117,14 @@ export class ThreeRendererComponent implements AfterViewInit {
   }
 
   changeTexture(coverTextureIndex: number): void {
+    const textureName = this.getTextureName(coverTextureIndex);
+    const textureImageUrl = this.coverTextures[coverTextureIndex].image.src;
+  
+    this.textureService.selectedTexture = {
+      name: textureName,
+      imageUrl: textureImageUrl,
+    };
+
     this.selectedTextureIndex = coverTextureIndex;
     if (coverTextureIndex >= 0 && coverTextureIndex < this.coverTextures.length) {
       const coverMesh = this.book.children.find(child => child instanceof THREE.Mesh) as THREE.Mesh;
@@ -207,6 +218,9 @@ adjustLogo(coverMesh: THREE.Mesh, logoTexture: THREE.Texture, width: number, hei
 
   // Agrega el logo como un hijo de la geometría de la portada
   coverMesh.add(logoMesh);
+}
+completarPedido(): void {
+  this.router.navigate(['/pedido']); // Assuming the route for PedidoComponent is '/pedido'
 }
 
 }

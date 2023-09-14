@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PDFDocument, rgb } from 'pdf-lib';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ORDER_URL } from 'src/app/shared/constants/urls';
+import { TextureService } from 'src/app/services/texture.service.service';
 
 @Component({
   selector: 'pedido',
@@ -31,7 +32,7 @@ export class PedidoComponent {
       const pdfDoc = await PDFDocument.load(uint8Array);
 
       this.pageCount = pdfDoc.getPageCount();
-      this.totalPrice = this.pageCount * 0.25;
+      this.totalPrice = this.pageCount * 0.25 + 35;
     };
 
     reader.readAsArrayBuffer(file);
@@ -40,7 +41,7 @@ export class PedidoComponent {
   documentId: string | null = null;
   
 
-  constructor(private http: HttpClient) {} // Asegúrate de haber inyectado HttpClient en el constructor
+  constructor(private http: HttpClient, public textureService: TextureService) {} // Asegúrate de haber inyectado HttpClient en el constructor
 
   async uploadDocument() {
     if (!this.selectedFile) {
@@ -49,6 +50,8 @@ export class PedidoComponent {
   
     const formData = new FormData();
     formData.append('file', this.selectedFile);
+    formData.append('selectedTextureName', this.textureService.selectedTexture?.name || ''); // Envía el nombre de la textura seleccionada
+    formData.append('totalPrice', this.totalPrice.toString());
   
     try {
       // Hacer la solicitud HTTP POST para enviar el archivo al servidor

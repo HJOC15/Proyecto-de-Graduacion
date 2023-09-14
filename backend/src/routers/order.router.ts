@@ -18,6 +18,9 @@ const DocumentModel = mongoose.model('Document', new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     file: { type: Buffer, required: true },
     fileName: { type: String, required: true },
+    selectedTextureName: {type: String, required: true},
+    totalPrice: {type: String, required: true}
+
   }));
 
 
@@ -109,11 +112,14 @@ router.post('/upload', upload.single('file'), asyncHander(async (req:any, res:an
   
     const { originalname } = req.file;
     const user = req.user.id;
+    const { selectedTextureName, totalPrice } = req.body;
   
     const document = new DocumentModel({
       user,
       file: req.file.buffer,
       fileName: originalname,
+      selectedTextureName, // Almacena el nombre de la textura seleccionada en el modelo
+      totalPrice,
     });
   
     await document.save();

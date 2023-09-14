@@ -1,10 +1,13 @@
-
 <input type="file" (change)="onFileSelected($event)">
 <div *ngIf="selectedFile">
   <p>Nombre del documento: {{ fileName }}</p>
   <p>Cantidad de páginas: {{ pageCount }}</p>
   <p>Total: {{ totalPrice }}</p>
+  <div *ngIf="textureService.selectedTexture">
+    <p>Textura seleccionada: {{ textureService.selectedTexture.name }}</p>
+    <img [src]="textureService.selectedTexture.imageUrl" alt="Texture Image" width="100">
+  </div>
   <button (click)="uploadDocument()">Confirmar</button>
   <button (click)="downloadDocument()">Descargar Documento</button>
-  
+
 </div>
