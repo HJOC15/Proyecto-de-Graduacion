@@ -1,13 +1,24 @@
-import {Router} from 'express';
+import { Router } from 'express';
 import asyncHander from 'express-async-handler';
+import multer from 'multer';
+import mongoose from 'mongoose';
 import { HTTP_BAD_REQUEST } from '../constants/http_status';
+import auth from '../middlewares/auth.mid';
 import { OrderStatus } from '../constants/order_status';
 import { OrderModel } from '../models/order.model';
-import auth from '../middlewares/auth.mid';
+
 
 const router = Router();
 router.use(auth);
 
+const storage = multer.memoryStorage(); // Almacena el archivo en memoria
+const upload = multer({ storage });
+
+const DocumentModel = mongoose.model('Document', new mongoose.Schema({
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    file: { type: Buffer, required: true },
+    fileName: { type: String, required: true },
+  }));
 
 
 router.post('/create',
@@ -90,6 +101,45 @@ router.get('/myOrders', asyncHander(async (req: any, res: any) => {
     const userOrders = await OrderModel.find({ user: userId });
     res.send(userOrders);
 }));
+
+router.post('/upload', upload.single('file'), asyncHander(async (req:any, res:any) => {
+    if (!req.file) {
+      return res.status(HTTP_BAD_REQUEST).send('No se ha seleccionado un archivo.');
+    }
+  
+    const { originalname } = req.file;
+    const user = req.user.id;
+  
+    const document = new DocumentModel({
+      user,
+      file: req.file.buffer,
+      fileName: originalname,
+    });
+  
+    await document.save();
+  
+    res.send('Documento subido exitosamente.');
+  }));
+
+  router.get('/download/:id', asyncHander(async (req:any, res:any) => {
+    const { id } = req.params;
+  
+    try {
+      const document = await DocumentModel.findById(id);
+  
+      if (!document) {
+        return res.status(HTTP_BAD_REQUEST).send('Documento no encontrado.');
+      }
+  
+      // Configurar la respuesta HTTP para enviar el archivo al cliente
+      res.setHeader('Content-Disposition', `attachment; filename=${document.fileName}`);
+      res.setHeader('Content-Type', 'application/pdf');
+      res.send(document.file);
+    } catch (error) {
+      console.error('Error al descargar el documento:', error);
+      res.status(HTTP_BAD_REQUEST).send('Error al descargar el documento.');
+    }
+  }));
 
 export default router;
 
