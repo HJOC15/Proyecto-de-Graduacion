@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { CartService } from '../../../services/cart.service';
 import { Productos } from 'src/app/shared/models/Productos';
+import { Text } from '@angular/compiler';
 
 @Component({
   selector: 'app-three-renderer',
@@ -20,6 +21,7 @@ export class ThreeRendererComponent implements AfterViewInit {
 
   private selectedTextureIndex: number = 0;
   private logoTexture: THREE.Texture;
+  text: THREE.Texture;
 
   constructor(private el: ElementRef, private cartservice:CartService) {
     this.coverTextures = [
@@ -28,8 +30,10 @@ export class ThreeRendererComponent implements AfterViewInit {
       new THREE.TextureLoader().load('assets/book_cover_texture3.jpg'),
       new THREE.TextureLoader().load('assets/book_cover_texture4.jpg'),
       new THREE.TextureLoader().load('assets/book_cover_texture5.jpg'),
+      
       // Agrega más texturas de cubierta según necesites
     ];
+    this.text = new THREE.TextureLoader().load('assets/TextoHD.png')
     this.pagesTexture = new THREE.TextureLoader().load('assets/book_pages_texture.jpg');
     this.logoTexture = new THREE.TextureLoader().load('');
   }
@@ -150,8 +154,8 @@ export class ThreeRendererComponent implements AfterViewInit {
             const coverMesh = this.book.children.find(child => child instanceof THREE.Mesh) as THREE.Mesh;
             if (coverMesh && coverMesh.material instanceof THREE.MeshBasicMaterial) {
                 // Aplicar la textura como logo
-                coverMesh.material.map = this.coverTextures[coverTextureIndex];
-                coverMesh.material = this.createCombinedMaterial(coverMesh.material.map, logoTexture);
+                this.adjustLogo(coverMesh, logoTexture, 2, 2, 0, 2, 0.1111111);
+                this.adjustLogo(coverMesh, this.text, 7, 6, 0, -0.5, 0.1111111);
             }
         };
 
@@ -160,10 +164,10 @@ export class ThreeRendererComponent implements AfterViewInit {
     }
 }
 
-createCombinedMaterial(baseTexture: THREE.Texture, overlayTexture: THREE.Texture): THREE.Material {
+createCombinedMaterial(baseTexture: THREE.Texture | null, overlayTexture: THREE.Texture): THREE.Material {
   // Crea un material personalizado que combina las dos texturas
   const material = new THREE.MeshBasicMaterial({
-      map: baseTexture, // Textura de la cubierta original como base
+      map: baseTexture || null, // Textura de la cubierta original como base, o null si es nula
       transparent: true, // Permite la transparencia
       opacity: 1, // Ajusta la opacidad según sea necesario
   });
@@ -174,6 +178,35 @@ createCombinedMaterial(baseTexture: THREE.Texture, overlayTexture: THREE.Texture
   material.alphaMap.wrapT = THREE.RepeatWrapping;
 
   return material;
+}
+getBookCover(): THREE.Mesh | null {
+  // En este ejemplo, asumimos que la portada del libro es el primer hijo del libro.
+  return this.book.children[0] instanceof THREE.Mesh ? this.book.children[0] as THREE.Mesh : null;
+}
+
+adjustLogo(coverMesh: THREE.Mesh, logoTexture: THREE.Texture, width: number, height: number, x :number,
+  y:number, z:number): void {
+
+
+  // Calcula el tamaño deseado para el logo (puedes ajustar estos valores)
+  const logoWidth = width // Ancho del logo
+  const logoHeight = height; // Altura del logo
+
+  // Crea un plano para el logo con las dimensiones deseadas
+  const logoGeometry = new THREE.PlaneGeometry(logoWidth, logoHeight);
+  const logoMaterial = new THREE.MeshBasicMaterial({ map: logoTexture, transparent: true, opacity: 1 });
+
+  // Crea una malla para el logo
+  const logoMesh = new THREE.Mesh(logoGeometry, logoMaterial);
+
+  // Ajusta la posición del logo (en el centro)
+  logoMesh.position.set(x, y, z); // Ajusta la posición según tus necesidades
+
+  // Ajusta la rotación para que el logo solo se muestre por el frente
+  logoMesh.rotation.set(0, 0, 0); // Ajusta la rotación según tus necesidades
+
+  // Agrega el logo como un hijo de la geometría de la portada
+  coverMesh.add(logoMesh);
 }
 
 }
