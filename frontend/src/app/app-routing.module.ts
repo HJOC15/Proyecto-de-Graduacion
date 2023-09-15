@@ -17,6 +17,7 @@ import { OrderPersonComponent } from './components/pages/order-person/order-pers
 import { AdminAuthGuard } from './auth/guards/admin-auth.guard';
 import { PedidoComponent } from './components/pages/pedido/pedido.component';
 import { OrdenesEmpastadosPageComponent } from './components/pages/ordenes-empastados-page/ordenes-empastados-page.component';
+import { OrdenesEmpastadosPersonaPageComponent } from './components/pages/ordenes-empastados-persona-page/ordenes-empastados-persona-page.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path: 'order-person', component: OrderPersonComponent, canActivate:[AuthGuard]},
   {path: 'pedido', component: PedidoComponent, canActivate:[AuthGuard]},
   {path: 'ordenes-empastados-page', component: OrdenesEmpastadosPageComponent, canActivate:[AdminAuthGuard]},
+  {path: 'ordenes-empastados-persona-page', component: OrdenesEmpastadosPersonaPageComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({

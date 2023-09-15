@@ -174,6 +174,13 @@ router.put('/documents/:id/updateStatus', asyncHander(async (req:any, res:any) =
   return res.send(document);
 }));
 
+router.get('/documents/by-user', asyncHander(async (req:any, res:any) => {
+  const userId = req.user.id;
+
+  const userDocuments = await DocumentModel.find({ user: userId });
+  res.send(userDocuments);
+}));
+
 export default router;
 
 async function getNewOrderForCurrentUser(req: any) {

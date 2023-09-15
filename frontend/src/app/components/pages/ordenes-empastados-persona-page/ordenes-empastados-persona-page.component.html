@@ -1,0 +1,13 @@
+<div class="container">
+    <h2>Mis empastados:</h2>
+    <ul>
+      <li *ngFor="let documento of userDocuments">
+        <p>Nombre del documento: {{ documento.fileName }}</p>
+        <p>Precio: Q.{{ documento.totalPrice }}</p>
+        <p>Estado actual del empastado: {{ documento.status }}</p>
+      </li>
+    </ul>
+    <p class="no-documents" *ngIf="!userDocuments || userDocuments.length === 0">
+      No se encontraron documentos para este usuario.
+    </p>
+  </div>
