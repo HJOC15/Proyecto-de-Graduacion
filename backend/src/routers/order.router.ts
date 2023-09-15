@@ -15,11 +15,13 @@ const storage = multer.memoryStorage(); // Almacena el archivo en memoria
 const upload = multer({ storage });
 
 const DocumentModel = mongoose.model('Document', new mongoose.Schema({
+    username: {type: String, required: true},
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     file: { type: Buffer, required: true },
     fileName: { type: String, required: true },
     selectedTextureName: {type: String, required: true},
-    totalPrice: {type: String, required: true}
+    totalPrice: {type: String, required: true},
+    status: {type: String, required: true}
 
   }));
 
@@ -112,14 +114,16 @@ router.post('/upload', upload.single('file'), asyncHander(async (req:any, res:an
   
     const { originalname } = req.file;
     const user = req.user.id;
-    const { selectedTextureName, totalPrice } = req.body;
+    const { username, selectedTextureName, totalPrice } = req.body;
   
     const document = new DocumentModel({
+      username,
       user,
       file: req.file.buffer,
       fileName: originalname,
       selectedTextureName, // Almacena el nombre de la textura seleccionada en el modelo
       totalPrice,
+      status: 'Nuevo',
     });
   
     await document.save();
@@ -145,6 +149,12 @@ router.post('/upload', upload.single('file'), asyncHander(async (req:any, res:an
       console.error('Error al descargar el documento:', error);
       res.status(HTTP_BAD_REQUEST).send('Error al descargar el documento.');
     }
+  }));
+
+  router.get('/getdocuments', asyncHander(async (req, res) => {
+    const allDocuments = await DocumentModel.find();
+    console.log(allDocuments)
+    res.send(allDocuments);
   }));
 
 export default router;

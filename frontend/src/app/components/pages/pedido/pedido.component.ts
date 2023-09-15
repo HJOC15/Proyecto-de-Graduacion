@@ -3,6 +3,8 @@ import { PDFDocument, rgb } from 'pdf-lib';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ORDER_URL } from 'src/app/shared/constants/urls';
 import { TextureService } from 'src/app/services/texture.service.service';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/shared/models/User';
 
 @Component({
   selector: 'pedido',
@@ -40,8 +42,13 @@ export class PedidoComponent {
 
   documentId: string | null = null;
   
-
-  constructor(private http: HttpClient, public textureService: TextureService) {} // Asegúrate de haber inyectado HttpClient en el constructor
+  user!:User;
+  constructor(private http: HttpClient, public textureService: TextureService, private userService:UserService) {
+    userService.userObservable.subscribe((newUser) =>{
+      this.user =newUser
+  
+    })
+  } // Asegúrate de haber inyectado HttpClient en el constructor
 
   async uploadDocument() {
     if (!this.selectedFile) {
@@ -49,6 +56,7 @@ export class PedidoComponent {
     }
   
     const formData = new FormData();
+    formData.append('username', this.user.name)
     formData.append('file', this.selectedFile);
     formData.append('selectedTextureName', this.textureService.selectedTexture?.name || ''); // Envía el nombre de la textura seleccionada
     formData.append('totalPrice', this.totalPrice.toString());
@@ -80,40 +88,6 @@ export class PedidoComponent {
       }
     } catch (error) {
       console.error('Error al subir el documento:', error);
-    }
-  }
-
-  async downloadDocument() {
-    this.documentId= '65025cb8b19cefc41e678e55'
-    if (!this.documentId) {
-      console.error('No se ha especificado un ID de documento.');
-      return;
-    }
-
-    try {
-      // Hacer una solicitud HTTP GET para descargar el documento
-      const response = await this.http.get(ORDER_URL + `/download/${this.documentId}`, {
-        responseType: 'blob', // Especificar que esperamos un blob (archivo binario) como respuesta
-      }).toPromise();
-
-      if (response instanceof Blob) { // Verificar si la respuesta es un Blob válido
-        // Crear un objeto Blob URL para el archivo
-        const blob = new Blob([response], { type: 'application/pdf' });
-        const objectUrl = URL.createObjectURL(blob);
-
-        // Crear un enlace para descargar el archivo
-        const a = document.createElement('a');
-        a.href = objectUrl;
-        a.download = this.fileName;
-        a.click();
-
-        // Liberar el objeto Blob URL después de la descarga
-        URL.revokeObjectURL(objectUrl);
-      } else {
-        console.error('Respuesta del servidor no es un Blob válido.');
-      }
-    } catch (error) {
-      console.error('Error al descargar el documento:', error);
     }
   }
 }

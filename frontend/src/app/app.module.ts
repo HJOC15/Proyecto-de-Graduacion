@@ -31,6 +31,7 @@ import { OrderDetailComponent } from './components/pages/order-detail/order-deta
 import { OrderPersonComponent } from './components/pages/order-person/order-person.component';
 import { ThreeRendererComponent } from './components/pages/three-renderer/three-renderer.component';
 import { PedidoComponent } from './components/pages/pedido/pedido.component';
+import { OrdenesEmpastadosPageComponent } from './components/pages/ordenes-empastados-page/ordenes-empastados-page.component';
 /*
 import { registerLocaleData } from '@angular/common';
 import localeEsGT from '@angular/common/locales/es-GT';
@@ -61,7 +62,8 @@ import localeEsGT from '@angular/common/locales/es-GT';
     OrderDetailComponent,
     OrderPersonComponent,
     ThreeRendererComponent,
-    PedidoComponent
+    PedidoComponent,
+    OrdenesEmpastadosPageComponent
   ],
   imports: [
     BrowserModule,
