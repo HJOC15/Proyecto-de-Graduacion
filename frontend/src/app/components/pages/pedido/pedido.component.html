@@ -1,12 +1,21 @@
-<input type="file" (change)="onFileSelected($event)">
-<div *ngIf="selectedFile">
+<div class="page-container">
+<ng-container *ngIf="!fileSelected">
+  <div class="file-upload-container">
+  <p class="instruction-text">¡Sube tu documento a empastar!</p>
+  <label class="file-upload-label" for="fileInput">Seleccionar Archivo</label>
+  <input type="file" id="fileInput" class="file-input" (change)="onFileSelected($event)">
+</div>
+</ng-container>
+
+<div class="file-info" *ngIf="selectedFile">
   <p>Nombre del documento: {{ fileName }}</p>
   <p>Cantidad de páginas: {{ pageCount }}</p>
-  <p>Total: {{ totalPrice }}</p>
-  <div *ngIf="textureService.selectedTexture">
+  <p>Total: Q.{{ totalPrice }}</p>
+  <div class="texture-info" *ngIf="textureService.selectedTexture">
     <p>Textura seleccionada: {{ textureService.selectedTexture.name }}</p>
-    <img [src]="textureService.selectedTexture.imageUrl" alt="Texture Image" width="100">
+    <img [src]="textureService.selectedTexture.imageUrl" alt="Texture Image" class="texture-image">
   </div>
-  <button (click)="uploadDocument()">Confirmar</button>
-
+  <button class="confirm-button" (click)="uploadDocument()">Confirmar</button>
+  <input type="file" id="fileInput" class="file-input" (change)="onFileSelected($event)">
+</div>
 </div>

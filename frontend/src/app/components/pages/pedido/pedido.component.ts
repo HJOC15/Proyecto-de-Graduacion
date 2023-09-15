@@ -5,6 +5,7 @@ import { ORDER_URL } from 'src/app/shared/constants/urls';
 import { TextureService } from 'src/app/services/texture.service.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/shared/models/User';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'pedido',
@@ -18,7 +19,9 @@ export class PedidoComponent {
   totalPrice = 0;
 
   async onFileSelected(event: any) {
+    
     const file: File = event.target.files[0];
+    this.fileSelected = true; // Establece fileSelected en true para ocultar los campos
 
     if (!file) {
       return;
@@ -43,7 +46,9 @@ export class PedidoComponent {
   documentId: string | null = null;
   
   user!:User;
-  constructor(private http: HttpClient, public textureService: TextureService, private userService:UserService) {
+  fileSelected: boolean = false;
+  constructor(private http: HttpClient, public textureService: TextureService, 
+    private userService:UserService, private toastrService:ToastrService) {
     userService.userObservable.subscribe((newUser) =>{
       this.user =newUser
   
@@ -75,14 +80,9 @@ export class PedidoComponent {
         // Si deseas abrirlo en una nueva ventana del navegador (en este caso asumiendo que es un PDF):
         const blob = new Blob([response], { type: 'application/pdf' });
         const objectUrl = URL.createObjectURL(blob);
-  
-        // Si deseas descargar el archivo:
-        // const blob = new Blob([response], { type: 'application/pdf' });
-        // const url = window.URL.createObjectURL(blob);
-        // const a = document.createElement('a');
-        // a.href = url;
-        // a.download = 'documento.pdf';
-        // a.click();
+        this.toastrService.success(
+          'Pedido realizado con éxito'
+        )
       } else {
         console.error('Respuesta del servidor no es un Blob válido.');
       }
@@ -90,4 +90,5 @@ export class PedidoComponent {
       console.error('Error al subir el documento:', error);
     }
   }
+  
 }

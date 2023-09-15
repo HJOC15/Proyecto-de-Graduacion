@@ -60,4 +60,15 @@ export class OrdenesEmpastadosPageComponent implements OnInit {
       console.error('Error al descargar el documento:', error);
     }
   }
+  async updateStatus(documentId: string, newStatus: string) {
+    try {
+      const response = await this.http.put(ORDER_URL + `/documents/${documentId}/updateStatus`, { newStatus }).toPromise();
+      console.log('Documento actualizado:', response);
+  
+      // Luego puedes volver a cargar la lista de documentos para reflejar el cambio de estado.
+      this.fetchDocuments();
+    } catch (error) {
+      console.error('Error al actualizar el estado del documento:', error);
+    }
+  }
 }

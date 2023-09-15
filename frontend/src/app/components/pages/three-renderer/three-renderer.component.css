@@ -22,3 +22,40 @@
       color: white;
     }
   }
+
+   
+  .controls input[type="file"]{
+    opacity: 0;
+    position: relative;
+    z-index: -1;
+    cursor: pointer;
+  }
+  .file-upload-label {
+    background-color: whitesmoke;
+    color: #010101;
+    padding: 1rem 1.5rem;
+    border-radius: 100rem;
+    cursor: pointer;
+  }
+  
+  .file-upload-label:hover {
+    background-color: #4BDF8A;
+    color: white;
+  }
+  
+  .controls a {
+    background: whitesmoke;
+    color: #010101;
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 100rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s, color 0.3s;
+    text-decoration: none;
+  
+    &:hover {
+      background: #4BDF8A;
+      color: white;
+    }
+  }

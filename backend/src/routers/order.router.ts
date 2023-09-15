@@ -157,6 +157,23 @@ router.post('/upload', upload.single('file'), asyncHander(async (req:any, res:an
     res.send(allDocuments);
   }));
 
+  // En el archivo de enrutamiento de Express
+
+router.put('/documents/:id/updateStatus', asyncHander(async (req:any, res:any) => {
+  const { id } = req.params;
+  const { newStatus } = req.body;
+
+  // Aquí deberías validar que "newStatus" sea un estado válido antes de actualizar el documento.
+
+  const document = await DocumentModel.findByIdAndUpdate(id, { status: newStatus }, { new: true });
+
+  if (!document) {
+    return res.status(HTTP_BAD_REQUEST).send('Documento no encontrado.');
+  }
+
+  return res.send(document);
+}));
+
 export default router;
 
 async function getNewOrderForCurrentUser(req: any) {

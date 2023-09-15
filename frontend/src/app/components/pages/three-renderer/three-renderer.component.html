@@ -4,7 +4,8 @@
     <button class="menu-button" (click)="changeTexture(2)">Verde oscuro texturizado</button>
     <button class="menu-button" (click)="changeTexture(3)">Rojo sangre</button>
     <button class="menu-button" (click)="changeTexture(4)">Rojo sangre portada</button>
-    <input type="file" (change)="addLogo($event, 0)" accept=".png">
+    <label class="file-upload-label" for="fileInput">Seleccionar Archivo</label>
+    <input type="file" id="fileInput" (change)="addLogo($event, 0)" accept=".png">
     <a routerLink="/pedido">Completar Pedido</a>
 </div>
     <!-- Agrega más botones según el número de texturas -->

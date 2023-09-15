@@ -1,22 +1,24 @@
 <table>
-    <thead>
-      <tr>
-        <th>User</th>
-        <th>Precio total</th>
-        <th>Nombre del archivo</th>
-        <th>Estado</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let document of documents">
-        <td>{{ document.username }}</td>
-        <td>Q.{{ document.totalPrice }}</td>
-        <td>{{ document.fileName }}</td>
-        <td>{{ document.status }}</td>
-        <td>
-          <button (click)="downloadDocument(document._id, document.fileName)">Descargar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Precio total</th>
+      <th>Nombre del archivo</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let document of documents">
+      <td>{{ document.username }}</td>
+      <td>Q.{{ document.totalPrice }}</td>
+      <td>{{ document.fileName }}</td>
+      <td>{{ document.status }}</td>
+      <td>
+        <button (click)="downloadDocument(document._id, document.fileName)">Descargar</button>
+        <button (click)="updateStatus(document._id, 'En proceso')">En proceso</button>
+        <button (click)="updateStatus(document._id, 'Completado')">Completado</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

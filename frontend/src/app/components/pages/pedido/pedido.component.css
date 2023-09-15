@@ -1,0 +1,75 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; 
+    background-color: #f9f9f9; 
+  }
+  
+  
+  .file-input {
+    opacity: 0;
+    position: relative;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  .instruction-text {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+ 
+  .file-upload-label {
+    background-color: #1E8449;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .file-upload-label:hover {
+    background-color: #2980b9;
+  }
+
+.file-info {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.file-info p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.texture-info {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.texture-info p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.texture-image {
+  max-width: 100px;
+  margin: 10px auto;
+  display: block;
+}
+
+.confirm-button {
+  display: block;
+  margin: 20px auto;
+  background-color: #1E8449;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.confirm-button:hover {
+  background-color: #117A3B;
+}
