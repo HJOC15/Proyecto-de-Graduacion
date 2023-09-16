@@ -21,8 +21,8 @@ import { OrdenesEmpastadosPersonaPageComponent } from './components/pages/ordene
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'productos/:id', component:ProductosPageComponent},
-  {path: 'cart-page', component: CartPageComponent},
+  {path: 'productos/:id', component:ProductosPageComponent, canActivate:[AuthGuard]},
+  {path: 'cart-page', component: CartPageComponent, canActivate:[AuthGuard]},
   {path: 'login', component: LoginPageComponent},
   {path: 'register', component: RegisterPageComponent},
   {path: 'checkout', component: CheckoutPageComponent, canActivate:[AuthGuard]},

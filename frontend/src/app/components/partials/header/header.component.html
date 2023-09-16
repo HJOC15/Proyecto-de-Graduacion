@@ -27,7 +27,7 @@
                         <a (click)="logout()">Cerrar Sesión</a>
                     </div>
                 </li>
-                <li>
+                <li *ngIf="isAuth">
                     <a routerLink="/cart-page">
                         Carrito <span *ngIf="cartQuantity">{{cartQuantity}}</span>
                     </a>

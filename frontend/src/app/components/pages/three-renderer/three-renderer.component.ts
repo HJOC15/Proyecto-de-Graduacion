@@ -32,7 +32,15 @@ export class ThreeRendererComponent implements AfterViewInit {
       new THREE.TextureLoader().load('assets/book_cover_texture2.jpg'),
       new THREE.TextureLoader().load('assets/book_cover_texture3.jpg'),
       new THREE.TextureLoader().load('assets/book_cover_texture4.jpg'),
-      new THREE.TextureLoader().load('assets/book_cover_texture5.jpg'),
+      new THREE.TextureLoader().load('assets/book_cover_texture6.jpg'),
+      new THREE.TextureLoader().load('assets/book_cover_texture7.jpg'),
+      new THREE.TextureLoader().load('assets/book_cover_texture8.jpg'),
+      new THREE.TextureLoader().load('assets/book_cover_texture9.jpg'),
+      new THREE.TextureLoader().load('assets/book_cover_texture10.jpg'),
+      new THREE.TextureLoader().load('assets/book_cover_texture11.jpg'),
+      new THREE.TextureLoader().load('assets/book_cover_texture12.jpg'),
+      new THREE.TextureLoader().load('assets/book_cover_texture13.jpg'),
+      new THREE.TextureLoader().load('assets/book_cover_texture14.jpg'),
       
       // Agrega más texturas de cubierta según necesites
     ];
