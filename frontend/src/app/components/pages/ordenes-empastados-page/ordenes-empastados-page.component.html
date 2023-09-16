@@ -4,6 +4,7 @@
       <th>User</th>
       <th>Precio total</th>
       <th>Nombre del archivo</th>
+      <th>Material de empastado</th>
       <th>Estado</th>
       <th>Acciones</th>
     </tr>
@@ -13,6 +14,7 @@
       <td>{{ document.username }}</td>
       <td>Q.{{ document.totalPrice }}</td>
       <td>{{ document.fileName }}</td>
+      <td>{{ document.selectedTextureName }}</td>
       <td>{{ document.status }}</td>
       <td>
         <button (click)="downloadDocument(document._id, document.fileName)">Descargar</button>
