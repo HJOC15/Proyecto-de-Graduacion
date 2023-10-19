@@ -6,39 +6,26 @@ export const sample_foods: any[] =[
        price: 5,
        imageUrl: 'assets/img1.jpg'
     },
-    {
+    /*{
         id: '2',
         name: 'Tesinas Admon',
         price: 140,
         imageUrl: 'assets/img2.jpg'
-     },
+     },*/
      {
         id: '3',
         name: 'Sobre Manila',
         price: 1,
         imageUrl: 'assets/img3.jpg'
      },
-     {
+     /*{
         id: '4',
         name: 'Caja con 10 resmas',
         price: 500,
         imageUrl: 'assets/img4.jpg'
-     }
+     }*/
 ]
 
 export const sample_users: any[] =[
-   {
-      name: "Humberto Orellana",
-      email: "humbertorellana15@gmail.com",
-      password: "123456",
-      address: "Jalapa",
-      isAdmin: true
-   },
-   {
-      name: "Amadeo Cortez",
-      email: "amadeocortez@gmail.com",
-      password: "123456",
-      address: "Jalapa",
-      isAdmin: false
-   }
+   
 ]

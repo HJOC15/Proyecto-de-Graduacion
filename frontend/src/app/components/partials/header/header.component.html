@@ -7,10 +7,6 @@
                     <li *ngIf="!isAdmin()">
                     <a routerLink="/empastados-page">Crea tu Empastado</a>
                 </li>
-                <li *ngIf="isAuth">
-                    <li *ngIf="!isAdmin()">
-                    <a routerLink="/contact-page">Contacto</a>
-                </li>
                 <!-- *ngIf="!isAuth"-->
                 <li *ngIf="!isAuth">
                     <a routerLink="/login">Iniciar Sesión</a>

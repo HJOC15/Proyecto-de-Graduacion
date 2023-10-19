@@ -29,7 +29,7 @@ const routes: Routes = [
   {path: 'payment', component: PaymentPageComponent, canActivate:[AuthGuard]},
   {path:'track/:orderId', component: OrderTrackPageComponent, canActivate:[AuthGuard]},
   {path: 'empastados-page', component: EmpastadosPageComponent, canActivate:[AuthGuard]},
-  {path: 'contact-page', component: ContactPageComponent, canActivate:[AuthGuard]},
+  /*{path: 'contact-page', component: ContactPageComponent, canActivate:[AuthGuard]},*/
   {path: 'admin-page', component: AdminPageComponent, canActivate:[AdminAuthGuard]},
   {path: 'order/:id', component: OrderDetailComponent, canActivate:[AdminAuthGuard]},
   {path: 'order-person', component: OrderPersonComponent, canActivate:[AuthGuard]},

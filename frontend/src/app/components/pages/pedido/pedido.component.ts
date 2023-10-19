@@ -6,6 +6,7 @@ import { TextureService } from 'src/app/services/texture.service.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/shared/models/User';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pedido',
@@ -48,7 +49,7 @@ export class PedidoComponent {
   user!:User;
   fileSelected: boolean = false;
   constructor(private http: HttpClient, public textureService: TextureService, 
-    private userService:UserService, private toastrService:ToastrService) {
+    private userService:UserService, private toastrService:ToastrService, private router:Router) {
     userService.userObservable.subscribe((newUser) =>{
       this.user =newUser
   
@@ -82,7 +83,9 @@ export class PedidoComponent {
         const objectUrl = URL.createObjectURL(blob);
         this.toastrService.success(
           'Pedido realizado con éxito'
+          
         )
+        this.router.navigate(['/ordenes-empastados-persona-page']);
       } else {
         console.error('Respuesta del servidor no es un Blob válido.');
       }

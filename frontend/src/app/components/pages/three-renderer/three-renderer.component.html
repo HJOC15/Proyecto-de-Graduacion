@@ -1,19 +1,19 @@
 <div class="controls">
-    <button class="menu-button" (click)="changeTexture(0)">Café texturizado</button>
-    <button class="menu-button" (click)="changeTexture(1)">Cuerina</button>
-    <button class="menu-button" (click)="changeTexture(2)">Verde oscuro texturizado</button>
-    <button class="menu-button" (click)="changeTexture(3)">Rojo sangre</button>
-    <button class="menu-button" (click)="changeTexture(4)">Morado texturizado</button>
-    <button class="menu-button" (click)="changeTexture(5)">Amarillo Mostaza</button>
-    <button class="menu-button" (click)="changeTexture(6)">Celeste</button>
-    <button class="menu-button" (click)="changeTexture(7)">Azul Texturizado</button>
-    <button class="menu-button" (click)="changeTexture(8)">Aqua</button>
-    <button class="menu-button" (click)="changeTexture(9)">Rosado pastel</button>
-    <button class="menu-button" (click)="changeTexture(10)">Rojo</button>
-    <button class="menu-button" (click)="changeTexture(11)">Verde</button>
-    <button class="menu-button" (click)="changeTexture(12)">Azul oscuro</button>
     <label class="file-upload-label" for="fileInput">Seleccionar Archivo</label>
     <input type="file" id="fileInput" (change)="addLogo($event, 0)" accept=".png">
-    <a routerLink="/pedido">Completar Pedido</a>
+    <div class="texture-buttons">
+        <button class="menu-button" (click)="changeTexture(0)">Café texturizado</button>
+        <button class="menu-button" (click)="changeTexture(1)">Cuerina</button>
+        <button class="menu-button" (click)="changeTexture(2)">Verde oscuro texturizado</button>
+        <button class="menu-button" (click)="changeTexture(3)">Rojo sangre</button>
+        <button class="menu-button" (click)="changeTexture(4)">Morado texturizado</button>
+        <button class="menu-button" (click)="changeTexture(5)">Amarillo Mostaza</button>
+        <button class="menu-button" (click)="changeTexture(6)">Celeste</button>
+        <button class="menu-button" (click)="changeTexture(7)">Azul Texturizado</button>
+        <button class="menu-button" (click)="changeTexture(8)">Aqua</button>
+        <button class="menu-button" (click)="changeTexture(9)">Rosado pastel</button>
+        <button class="menu-button" (click)="changeTexture(10)">Rojo</button>
+        <button class="menu-button" (click)="changeTexture(11)">Verde</button>
+    </div>
+    <button class="menu-button complete-order-button" routerLink="/pedido">Completar Pedido</button>
 </div>
-    <!-- Agrega más botones según el número de texturas -->

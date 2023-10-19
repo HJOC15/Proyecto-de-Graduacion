@@ -1,61 +1,120 @@
 .controls {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem; 
-    background: white;
-    border-top: 1px solid #1E8449;
-  }
-  
-  .menu-button {
-    background: whitesmoke;
-    color: #010101;
-    border: none;
-    padding: 1rem 1.5rem;
-    border-radius: 100rem;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.3s, color 0.3s;
-  
-    &:hover {
-      background: #4BDF8A;
-      color: white;
-    }
-  }
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background: white;
+  border-top: 1px solid #1E8449;
+}
 
-   
-  .controls input[type="file"]{
-    opacity: 0;
-    position: relative;
-    z-index: -1;
-    cursor: pointer;
-  }
-  .file-upload-label {
-    background-color: whitesmoke;
-    color: #010101;
-    padding: 1rem 1.5rem;
-    border-radius: 100rem;
-    cursor: pointer;
-  }
-  
-  .file-upload-label:hover {
-    background-color: #4BDF8A;
-    color: white;
-  }
-  
-  .controls a {
-    background: whitesmoke;
-    color: #010101;
-    border: none;
-    padding: 1rem 1.5rem;
-    border-radius: 100rem;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.3s, color 0.3s;
-    text-decoration: none;
-  
-    &:hover {
-      background: #4BDF8A;
-      color: white;
-    }
-  }
+.complete-order-button {
+  background: whitesmoke;
+  color: #010101;
+  border: none;
+  padding: 0.5rem 1rem; /* Ajustar el tamaño del botón al contenido */
+  border-radius: 100rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s, color 0.3s;
+  margin-top: 1rem; /* Espacio entre el botón y el label */
+}
+
+.complete-order-button:hover {
+  background: #4BDF8A;
+  color: white;
+}
+
+.texture-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.menu-button {
+  background: whitesmoke;
+  color: #010101;
+  border: none;
+  padding: 0.5rem 1rem; /* Ajustar el tamaño de los botones al contenido */
+  border-radius: 100rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s, color 0.3s;
+  margin: 0.5rem;
+}
+
+.menu-button:hover {
+  background: #4BDF8A;
+  color: white;
+}
+
+.controls input[type="file"] {
+  opacity: 0;
+  position: relative;
+  z-index: -1;
+  cursor: pointer;
+}
+
+.file-upload-label {
+  background-color: whitesmoke;
+  color: #010101;
+  padding: 0.5rem; /* Ajusta el relleno según tus necesidades */
+  border-radius: 100rem;
+  cursor: pointer;
+  text-align: center; /* Centra el texto horizontalmente */
+  display: block; /* Para que ocupe todo el ancho disponible */
+  margin: 0 auto; /* Centra el label en el contenedor */
+}
+
+.file-upload-label:hover {
+  background-color: #4BDF8A;
+  color: white;
+}
+.controls {
+  position: relative;
+  display: flex;
+  flex-direction: column; /* Cambia la dirección a columna */
+  align-items: center; /* Centra horizontalmente los elementos en el contenedor */
+  padding: 1rem;
+  background: white;
+  border-top: 1px solid #1E8449;
+}
+
+.complete-order-button {
+  background: whitesmoke;
+  color: #010101;
+  border: none;
+  padding: 0.5rem 1rem; /* Ajusta el tamaño del botón al contenido */
+  border-radius: 100rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s, color 0.3s;
+  margin-top: 1rem; /* Espacio entre el botón y los otros elementos */
+}
+
+.complete-order-button:hover {
+  background: #4BDF8A;
+  color: white;
+}
+
+.texture-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra horizontalmente los botones de texturas */
+}
+
+.menu-button {
+  background: whitesmoke;
+  color: #010101;
+  border: none;
+  padding: 0.5rem 1rem; /* Ajusta el tamaño de los botones al contenido */
+  border-radius: 100rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s, color 0.3s;
+  margin: 0.5rem;
+}
+
+.menu-button:hover {
+  background: #4BDF8A;
+  color: white;
+}
