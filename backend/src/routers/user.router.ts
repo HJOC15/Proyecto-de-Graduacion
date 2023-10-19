@@ -5,6 +5,7 @@ import asyncHandler from 'express-async-handler'
 import { User, UserModel } from '../models/user.model';
 import { HTTP_BAD_REQUEST } from '../constants/http_status';
 import bcrypt from 'bcryptjs'
+import mongoose from 'mongoose';
 
 const router = Router();
 
@@ -47,7 +48,9 @@ router.post('/register', asyncHandler(
 
         const encryptedPassword = await bcrypt.hash(password, 10);
 
+        const newUserId = new mongoose.Types.ObjectId();
         const newUser:User ={
+            _id: newUserId,
             name,
             email: email.toLowerCase(),
             password: encryptedPassword,
@@ -62,13 +65,14 @@ router.post('/register', asyncHandler(
 ))
 
 const generateTokenResponse = (user:User)=>{
-    const token = jwt.sign({ email:user.email, isAdmin:user.isAdmin
+    const token = jwt.sign({ id: user._id, email:user.email, isAdmin:user.isAdmin
     }, "TextoRandom", {
         expiresIn:"30d"
     });
 
     //const data = {token:token, user}
     return  {
+        id: user._id,
         email: user.email,
         name: user.name,
         address: user.address,

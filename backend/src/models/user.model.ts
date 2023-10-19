@@ -1,6 +1,7 @@
-import {Schema, model} from 'mongoose';
+import mongoose, {Schema, model} from 'mongoose';
 
 export interface User{
+    _id: mongoose.Types.ObjectId;
     email:string;
     password:string;
     name:string;
