@@ -48,7 +48,6 @@ router.post('/register', asyncHandler(
         const encryptedPassword = await bcrypt.hash(password, 10);
 
         const newUser:User ={
-            id:'',
             name,
             email: email.toLowerCase(),
             password: encryptedPassword,
@@ -63,15 +62,13 @@ router.post('/register', asyncHandler(
 ))
 
 const generateTokenResponse = (user:User)=>{
-    const token = jwt.sign({
-        id: user.id, email:user.email, isAdmin:user.isAdmin
+    const token = jwt.sign({ email:user.email, isAdmin:user.isAdmin
     }, "TextoRandom", {
         expiresIn:"30d"
     });
 
     //const data = {token:token, user}
     return  {
-        id: user.id,
         email: user.email,
         name: user.name,
         address: user.address,

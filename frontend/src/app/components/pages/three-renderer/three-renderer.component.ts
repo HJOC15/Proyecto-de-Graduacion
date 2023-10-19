@@ -155,7 +155,8 @@ export class ThreeRendererComponent implements AfterViewInit {
 
   
   getTextureName(index: number): string {
-    const textureNames = ['Café texturizado', 'Cuerina', 'Verde oscuro texturizado', 'Rojo sangre', 'Rojo sangre portada'];
+    const textureNames = ['Café texturizado', 'Cuerina', 'Verde oscuro texturizado',
+     'Rojo sangre', 'Morado Texturizado', 'Amarillo Mostaza', 'Celeste', 'Azul Texturizado', 'Aqua', 'Rosado Pastel', 'Rojo', 'Verde', 'Azul oscuro'];
     return textureNames[index];
   }
 

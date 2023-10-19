@@ -11,8 +11,13 @@ import { OrderModel } from '../models/order.model';
 const router = Router();
 router.use(auth);
 
+const MAX_DOCUMENT_SIZE = 100 * 1024 * 1024;
+
 const storage = multer.memoryStorage(); // Almacena el archivo en memoria
-const upload = multer({ storage });
+const upload = multer({ storage,
+  limits: {
+    fileSize: MAX_DOCUMENT_SIZE,
+  }, });
 
 const DocumentModel = mongoose.model('Document', new mongoose.Schema({
     username: {type: String, required: true},
