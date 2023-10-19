@@ -11,7 +11,7 @@
                 <li *ngIf="!isAuth">
                     <a routerLink="/login">Iniciar Sesión</a>
                     <li *ngIf="isAdmin()" class ="menu-container">
-                        <a routerLink="/admin-page">Admin</a>
+                        <a routerLink="/admin-page">Ordenes</a>
                         <div class ="menu">
                             <a routerLink="/ordenes-empastados-page">Ordenes Empastado</a>
                         </div>
@@ -20,8 +20,8 @@
                 <li *ngIf="isAuth"  class ="menu-container">
                     <a routerLink="/dashboard">{{user.name}}</a>
                     <div class ="menu">
-                        <a routerLink="/order-person">Ordenes</a>
-                        <a routerLink="/ordenes-empastados-persona-page">Ordenes Empastado</a>
+                        <a *ngIf="!isAdmin()" routerLink="/order-person">Ordenes</a>
+                        <a *ngIf="!isAdmin()" routerLink="/ordenes-empastados-persona-page">Ordenes Empastado</a>
                         <a (click)="logout()">Cerrar Sesión</a>
                     </div>
                 </li>
