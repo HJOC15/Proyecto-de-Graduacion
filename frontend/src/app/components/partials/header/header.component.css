@@ -5,6 +5,20 @@ header{
     border-bottom: 1px solid #1E8449;
 
 }
+ul li {
+    margin-left: 5px; 
+    margin-right: 5px; 
+}
+
+ul li a {
+    padding-left: 10px; 
+    padding-right: 10px; 
+    font-size: 1.2rem; 
+}
+
+ul li:last-child {
+    margin-right: 50px; 
+}
 
 a{
     color : #010101;
@@ -23,6 +37,7 @@ a:hover{
 a.logo{
     font-weight: bold;
     padding: 1rem;
+    font-size: 1.5rem;
 }
 
 ul{
@@ -63,4 +78,5 @@ a span{
 .menu a{
     width: 100%;
     min-width: 8rem;
+    font-size: 1.2rem;
 }
